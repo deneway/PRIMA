@@ -12,7 +12,6 @@ namespace L02_FirstFudge {
         
         const canvas: HTMLCanvasElement = document.querySelector("canvas");  //Nimmt nur erstes Element (SelectorAll nimmt alle)  const unveränderbar, let innerhalb des Blocks in dem sie deklariert ist, var innerhalb funktionsebne 
         fudge.RenderManager.initialize();
-        
 
         let node: fudge.Node = new fudge.Node("Quad");
 
@@ -20,8 +19,10 @@ namespace L02_FirstFudge {
         let cmpMesh: fudge.ComponentMesh = new fudge.ComponentMesh(mesh);
         node.addComponent(cmpMesh);
 
-        let mtrSolidWhite: fudge.Material = new fudge.Material("Solidwhite", fudge.ShaderUniColor, new fudge.CoatColored(new fudge.Color(1,1,1,1)));
-        
+        let mtrSolidWhite: fudge.Material = new fudge.Material("Solidwhite", fudge.ShaderUniColor, new fudge.CoatColored(new fudge.Color(1,1,1,0)));
+        let cmpMaterial: fudge.ComponentMaterial = new fudge.ComponentMaterial(mtrSolidWhite);
+        node.addComponent(cmpMaterial);
+
         let camComp: fudge.ComponentCamera = new fudge.ComponentCamera();
         camComp.pivot.translateZ(2);
         
