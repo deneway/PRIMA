@@ -35,7 +35,7 @@ var L03_PongPaddle;
         ball.addComponent(new ƒ.ComponentMesh(meshQuad));
         paddleL.addComponent(new ƒ.ComponentMesh(meshQuad));
         paddleR.addComponent(new ƒ.ComponentMesh(meshQuad));
-        ball.addComponent(new ƒ.ComponentMaterial(mtrSolidBlue));
+        ball.addComponent(new ƒ.ComponentMaterial(mtrSolidWhite));
         paddleL.addComponent(new ƒ.ComponentMaterial(mtrSolidBlue));
         paddleR.addComponent(new ƒ.ComponentMaterial(mtrSolidBlue));
         ball.addComponent(new ƒ.ComponentTransform());
@@ -47,4 +47,5 @@ var L03_PongPaddle;
         return pong;
     }
 })(L03_PongPaddle || (L03_PongPaddle = {}));
+//Hausaufgabe NicoKlein97 hoch und herunterfahren Eventlistener
 //# sourceMappingURL=Main.js.map
