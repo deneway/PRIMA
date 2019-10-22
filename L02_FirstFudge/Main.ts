@@ -17,10 +17,14 @@ namespace L02_FirstFudge {
 
         let mesh: fudge.MeshQuad = new fudge.MeshQuad();
         let cmpMesh: fudge.ComponentMesh = new fudge.ComponentMesh(mesh);
+        cmpMesh.pivot.scaleY(0.3);
+        cmpMesh.pivot.scaleX(0.05);
+        cmpMesh.pivot.translateX(-0.95);
         node.addComponent(cmpMesh);
+        
 
-        let mtrSolidWhite: fudge.Material = new fudge.Material("Solidwhite", fudge.ShaderUniColor, new fudge.CoatColored(new fudge.Color(1,1,1,0)));
-        let cmpMaterial: fudge.ComponentMaterial = new fudge.ComponentMaterial(mtrSolidWhite);
+        let mtrSolidWhite: fudge.Material = new fudge.Material("Solidwhite", fudge.ShaderUniColor, new fudge.CoatColored(new fudge.Color(0.5,1,1,0)));
+        let cmpMaterial: fudge.ComponentMaterial = new fudge.ComponentMaterial(mtrSolidWhite); 
         node.addComponent(cmpMaterial);
 
         let camComp: fudge.ComponentCamera = new fudge.ComponentCamera();
