@@ -23,10 +23,11 @@ var L03_PongPaddle;
         paddleL.cmpTransform.local.translateX(-20);
         paddleR.getComponent(ƒ.ComponentMesh).pivot.scaleY(4);
         paddleL.getComponent(ƒ.ComponentMesh).pivot.scaleY(4);
-        let viewport = new ƒ.Viewport();
-        viewport.initialize("Viewport", pong, camComp, canvas);
-        ƒ.Debug.log(viewport);
-        viewport.draw();
+        L03_PongPaddle.viewport = new ƒ.Viewport();
+        L03_PongPaddle.viewport.initialize("Viewport", pong, camComp, canvas);
+        ƒ.Debug.log(L03_PongPaddle.viewport);
+        KeyDownEvent();
+        L03_PongPaddle.viewport.draw();
     }
     function createPong() {
         let mtrSolidBlue = new ƒ.Material("Solidwhite", ƒ.ShaderUniColor, new ƒ.CoatColored(new ƒ.Color(0.5, 1, 1, 0)));
@@ -46,6 +47,26 @@ var L03_PongPaddle;
         pong.appendChild(paddleR);
         return pong;
     }
+    //Game Properties
+    function KeyDownEvent() {
+        document.body.onkeydown = function (e) {
+            if (e.keyCode == 38) {
+                paddleR.getComponent(ƒ.ComponentMesh).pivot.translateY(0.35);
+                L03_PongPaddle.viewport.draw();
+            }
+            else if (e.keyCode == 40) {
+                paddleR.getComponent(ƒ.ComponentMesh).pivot.translateY(-0.35);
+                L03_PongPaddle.viewport.draw();
+            }
+            else if (e.keyCode == 87) {
+                paddleL.getComponent(ƒ.ComponentMesh).pivot.translateY(0.35);
+                L03_PongPaddle.viewport.draw();
+            }
+            else if (e.keyCode == 83) {
+                paddleL.getComponent(ƒ.ComponentMesh).pivot.translateY(-0.35);
+                L03_PongPaddle.viewport.draw();
+            }
+        };
+    }
 })(L03_PongPaddle || (L03_PongPaddle = {}));
-//Hausaufgabe NicoKlein97 hoch und herunterfahren Eventlistener
 //# sourceMappingURL=Main.js.map

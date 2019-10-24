@@ -5,6 +5,8 @@ namespace L03_PongPaddle {
 
     import ƒ = FudgeCore;
 
+    export let viewport: ƒ.Viewport;
+
     window.addEventListener("load", handleLoad);
     // export let viewport: fudge.Viewport;
 
@@ -29,9 +31,11 @@ namespace L03_PongPaddle {
         ( <ƒ.ComponentMesh> paddleR.getComponent(ƒ.ComponentMesh)).pivot.scaleY(4);
         ( <ƒ.ComponentMesh> paddleL.getComponent(ƒ.ComponentMesh)).pivot.scaleY(4);
         
-        let viewport: ƒ.Viewport = new ƒ.Viewport();
+        viewport = new ƒ.Viewport();
         viewport.initialize("Viewport", pong, camComp, canvas);  
         ƒ.Debug.log(viewport);
+
+        KeyDownEvent();
 
         viewport.draw();
     
@@ -39,8 +43,8 @@ namespace L03_PongPaddle {
 
     function createPong(): ƒ.Node {
 
-        let mtrSolidBlue: ƒ.Material = new ƒ.Material("Solidwhite", ƒ.ShaderUniColor, new ƒ.CoatColored(new ƒ.Color(0.5,1,1,0)));
-        let mtrSolidWhite: ƒ.Material = new ƒ.Material("Solidwhite", ƒ.ShaderUniColor, new ƒ.CoatColored(new ƒ.Color(1,1,1,0)));
+        let mtrSolidBlue: ƒ.Material = new ƒ.Material("Solidwhite", ƒ.ShaderUniColor, new ƒ.CoatColored(new ƒ.Color(0.5, 1, 1, 0)));
+        let mtrSolidWhite: ƒ.Material = new ƒ.Material("Solidwhite", ƒ.ShaderUniColor, new ƒ.CoatColored(new ƒ.Color(1, 1, 1, 0)));
         let meshQuad: ƒ.MeshQuad = new ƒ.MeshQuad();
 
         ball.addComponent(new ƒ.ComponentMesh(meshQuad));
@@ -62,6 +66,26 @@ namespace L03_PongPaddle {
         return pong; 
 
     }
-} 
 
-//Hausaufgabe NicoKlein97 hoch und herunterfahren Eventlistener
+    //Game Properties
+
+    function KeyDownEvent(): void {
+
+        document.body.onkeydown = function(e: KeyboardEvent): void {
+            if (e.keyCode == 38) {
+                (<ƒ.ComponentMesh>paddleR.getComponent(ƒ.ComponentMesh)).pivot.translateY(0.35); 
+                viewport.draw();
+            } else if (e.keyCode == 40) {
+                (<ƒ.ComponentMesh>paddleR.getComponent(ƒ.ComponentMesh)).pivot.translateY(-0.35);
+                viewport.draw();
+            } else if (e.keyCode == 87) {
+                (<ƒ.ComponentMesh>paddleL.getComponent(ƒ.ComponentMesh)).pivot.translateY(0.35);
+                viewport.draw();
+            } else if (e.keyCode == 83) {
+                (<ƒ.ComponentMesh>paddleL.getComponent(ƒ.ComponentMesh)).pivot.translateY(-0.35);
+                viewport.draw();
+            } 
+        };
+
+}       
+}
